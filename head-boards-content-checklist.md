@@ -57,3 +57,20 @@ Graag per punt "klopt" of "weghalen":
 - 1000 m² Experience Center
 - 35.000 volgers op Instagram
 - 4,7 / 5 uit 46 reviews
+
+---
+
+## Update 19-11: al door ons opgelost in het nieuwe thema
+
+- Oude producttabbladen (zoals "Wat krijgt u?", "Waarom Head-Boards?" en "Verzendinformatie") worden weer per product getoond. Lege tabbladen worden verborgen.
+- Placeholders bij Specificaties en Levering & retour zijn weg. Levering & retour toont nu de pagina Verzendbeleid.
+- Matras-USP's en de beloftes (proefslapen, garantie, montage) staan alleen nog bij de matrassen. **De klant moet ze nog bevestigen.**
+- Hoofdbord-FAQ staat alleen nog bij hoofdborden. De vraag over levertijd (6–8 weken) is weggehaald, omdat die botst met "10 tot 12 werkweken" in de producttabbladen. **Graag de juiste levertijd van de klant.**
+- Voorbeeldreviews en de blokken over eetkamerstoelen en hotels zijn verborgen op productpagina's, en ook op Accessoires en Shop-landing.
+- "Lorem ipsum" op de FAQ-pagina is weg.
+- Knoppen "Download inspiratie magazine" (link `#`) en de brochure-sectie op de homepage zijn verborgen, tot er een PDF is.
+- "New"-label heet nu "Nieuw". "Bekijk ook" (gerelateerde producten) staat aan. Winkelwagen-upsell heeft als kop "Maak je slaapkamer compleet".
+
+## Nieuw gevonden – beslissing nodig
+
+- Producten met de tags `hide-price` en `offerte aanvragen` (alle hoofdborden, bedden, matrassen en projecten) tonen in het nieuwe thema **€0,00 en een knop "Aan winkelwagen"**. Het oude thema verborg die. Dit moet vóór livegang opgelost worden: het thema moet een "Offerte aanvragen"-knop tonen.
