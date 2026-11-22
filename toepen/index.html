@@ -76,6 +76,8 @@
   td { padding: 6px 0; border-top: 1px solid var(--line); }
   td:last-child { text-align: right; font-weight: 700; }
   .hint { font-size: .85rem; color: var(--muted); margin: 10px 0 0; line-height: 1.4; }
+  .modal { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: grid; place-items: center; padding: 20px; }
+  .modal .panel { max-width: 360px; width: 100%; }
   .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: #1c1917; color: #fff; padding: 10px 16px; border-radius: 10px; font-size: .9rem; opacity: 0; transition: opacity .2s; pointer-events: none; }
   .toast.show { opacity: .95; }
 </style>
@@ -101,7 +103,15 @@ function load() {
   try { return Object.assign(defaultState(), JSON.parse(localStorage.getItem(KEY)) || {}); }
   catch { return defaultState(); }
 }
-function save() { localStorage.setItem(KEY, JSON.stringify(S)); }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} }
+function ask(msg) {
+  return new Promise(res => {
+    const d = document.createElement('div'); d.className = 'modal';
+    d.innerHTML = `<div class="panel"><p>${esc(msg)}</p><div class="footer-actions"><button data-v="0">Annuleren</button><button class="danger" data-v="1">Ja</button></div></div>`;
+    d.onclick = e => { const v = e.target.dataset.v; if (v !== undefined) { d.remove(); res(v === '1'); } };
+    document.body.appendChild(d);
+  });
+}
 function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function toast(msg) {
   const t = document.getElementById('toast');
@@ -158,20 +168,20 @@ const A = {
     S.stake = h.stake; S.round = h.round;
     save(); render(); toast('Ongedaan gemaakt');
   },
-  newGame() {
+  async newGame() {
     const w = winner();
     if (w) S.wins[w.name] = (S.wins[w.name] || 0) + 1;
-    else if (!confirm('Nieuw potje beginnen? De huidige stand gaat verloren.')) return;
+    else if (!await ask('Nieuw potje beginnen? De huidige stand gaat verloren.')) return;
     S.players.forEach(p => p.score = 0);
     Object.assign(S, { stake: 1, history: [], round: 1 });
     save(); render();
   },
-  toSetup() {
-    if (!winner() && S.history.length && !confirm('Terug naar spelers? Het huidige potje wordt gestopt.')) return;
+  async toSetup() {
+    if (!winner() && S.history.length && !await ask('Terug naar spelers? Het huidige potje wordt gestopt.')) return;
     S.phase = 'setup'; save(); render();
   },
-  resetAll() {
-    if (!confirm('Alles wissen, inclusief spelers en gewonnen potjes?')) return;
+  async resetAll() {
+    if (!await ask('Alles wissen, inclusief spelers en gewonnen potjes?')) return;
     S = defaultState(); save(); render();
   },
 };
