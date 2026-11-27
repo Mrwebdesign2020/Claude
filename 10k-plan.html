@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10K Training Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="css">
+/* VOICE everyday: a personal training log, energetic but tidy
+   IDEA an athletics track and a race-bib logbook: tartan red, white lane lines, bib numerals
+   PICTURE the long-run ladder: one bar per week, longest nonstop run in minutes, filled as weeks get done
+   COLOUR tartan red #c8402a band; white/ink #18120f; grass #2f8a4c for done; bib yellow #f5c400 for "today"
+   TYPE Barlow Condensed 700/800 for numerals and titles + Barlow text
+   LAYOUT red band: title + key figures top, ladder full width beneath; then week cards in a 2-col grid; phone stacks */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#141010);--ink:light-dark(#18120f,#f4ece8);--soft:light-dark(#6b5f5a,#b8aaa4);--line:light-dark(#eadfda,#3a2e2b);--card:light-dark(#fbf7f5,#1d1716);--red:#c8402a;--redd:light-dark(#a8321f,#e0573f);--go:#2f8a4c;--warn:#d99100;--stop:#c8402a;--sun:#f5c400}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Barlow,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3,.num{font-family:"Barlow Condensed",Barlow,system-ui,sans-serif;letter-spacing:-.01em;line-height:1.05}
+h1{font-size:clamp(40px,6vw,64px);font-weight:800;margin:0;text-wrap:balance}
+h2{font-size:clamp(30px,4vw,40px);font-weight:700;margin:0 0 14px}
+h3{font-size:24px;font-weight:700;margin:0}
+p{margin:0 0 10px;max-width:68ch}
+.band{padding:clamp(28px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+.track{background:var(--red);color:#fff;background-image:repeating-linear-gradient(180deg,transparent 0 46px,rgba(255,255,255,.16) 46px 48px)}
+.top{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:flex-end;justify-content:space-between}
+.sub{font-size:17px;opacity:.92;margin-top:10px}
+.figs{display:flex;flex-wrap:wrap;gap:12px}
+.fig1{background:#fff;color:#18120f;border-radius:6px;padding:8px 16px 10px;min-width:118px}
+.fig1 .num{font-size:44px;font-weight:800;display:block;white-space:nowrap}
+.fig1 span:last-child{font-size:14px;color:#5a4d48}
+.ladder{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:clamp(6px,1.4vw,16px);align-items:end;height:230px;margin-top:30px}
+.rung{display:flex;flex-direction:column;justify-content:flex-end;height:100%;text-align:center}
+.rung b{font:700 18px "Barlow Condensed",sans-serif;white-space:nowrap;margin-bottom:4px}
+.bar{background:rgba(255,255,255,.28);border-radius:4px 4px 0 0;transition:height .6s ease}
+.rung.done .bar{background:#fff}
+.rung.now .bar{background:var(--sun)}
+.rung small{font-size:14px;margin-top:6px;border-top:2px solid #fff;padding-top:4px}
+.cap{font-size:14px;margin-top:10px;opacity:.9}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:4px;overflow-x:auto;padding:0 max(5vw,16px)}
+nav a{flex:none;color:var(--ink);text-decoration:none;font-weight:600;padding:14px 12px;border-bottom:3px solid transparent}
+nav a:hover,nav a:focus-visible{border-color:var(--red);outline:none}
+.status{font-size:14px;color:var(--soft);margin:-4px 0 16px}
+.weeks{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:18px}
+.wk{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px 18px 14px}
+.wk.now{border:2px solid var(--sun);box-shadow:0 0 0 3px color-mix(in srgb,var(--sun) 25%,transparent)}
+.wkh{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:8px}
+.wkh .meta{font-size:14px;color:var(--soft)}
+.tag{display:inline-block;font:700 15px "Barlow Condensed",sans-serif;padding:1px 8px;border-radius:3px;background:var(--red);color:#fff;margin-left:6px;vertical-align:3px}
+.tag.now{background:var(--sun);color:#18120f}
+.ses{display:grid;grid-template-columns:44px 46px minmax(0,1fr);gap:10px;align-items:start;padding:9px 0;border-top:1px solid var(--line)}
+.ses .day{font:700 20px "Barlow Condensed",sans-serif;padding-top:9px}
+.ses .what{padding-top:6px}
+.ses .kind{font-size:13px;font-weight:600;color:var(--redd);display:block}
+.ses.ok .what{color:var(--soft)}
+.ses.ok .what .txt{text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--soft) 60%,transparent)}
+.chk{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:var(--bg);cursor:pointer;display:grid;place-items:center;color:transparent;font-size:22px;font-weight:700}
+.chk:hover{border-color:var(--go)}
+.chk:focus-visible,select:focus-visible,input:focus-visible,button:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.chk[aria-checked=true]{background:var(--go);border-color:var(--go);color:#fff}
+.gro{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;border-top:1px solid var(--line);padding-top:12px;margin-top:2px;font-size:15px}
+select,input{font:16px Barlow,sans-serif;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:6px;padding:9px 10px;min-height:44px}
+input{width:7.5em}
+.verd{font-size:14px;font-weight:600;padding:3px 9px;border-radius:4px}
+.v0{background:color-mix(in srgb,var(--go) 16%,transparent);color:light-dark(#1f6a37,#6fd08f)}
+.v1{background:color-mix(in srgb,var(--warn) 20%,transparent);color:light-dark(#8a5c00,#ffc04d)}
+.v2{background:color-mix(in srgb,var(--stop) 18%,transparent);color:light-dark(#a8321f,#ff8a73)}
+.alt{background:light-dark(#fff6d6,#2a2410);border-left:4px solid var(--sun);padding:12px 14px;margin-top:12px;font-size:15px;border-radius:0 6px 6px 0}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:28px}
+.calc{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:24px;align-items:start}
+.calc label{display:block;font-weight:600;margin-bottom:6px}
+.est{margin-top:14px;font-size:15px;color:var(--soft)}
+.est .num{font-size:52px;font-weight:800;color:var(--ink);display:block}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:14px;color:var(--soft);font-weight:600}
+td.p{font:700 22px "Barlow Condensed",sans-serif;white-space:nowrap;text-align:right}
+.alt-band{background:var(--card);border-block:1px solid var(--line)}
+.rule{display:grid;gap:10px}
+.rule div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:14px;padding:12px 14px;border-radius:6px}
+.rule b{font:700 22px "Barlow Condensed",sans-serif}
+ul{padding-left:20px;margin:6px 0}
+li{margin-bottom:6px}
+.steps{counter-reset:s;list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
+.steps li{border-top:3px solid var(--red);padding-top:10px}
+.steps b{display:block;font:700 21px "Barlow Condensed",sans-serif}
+.btn{font:600 15px Barlow,sans-serif;background:none;border:1.5px solid var(--line);color:var(--ink);border-radius:6px;padding:10px 14px;min-height:44px;cursor:pointer}
+footer{font-size:14px;color:var(--soft)}
+.scroll{overflow-x:auto}
+@media(max-width:600px){
+.ladder{height:170px}
+.figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%}
+.fig1{min-width:0;padding:8px 10px}
+.fig1 .num{font-size:32px}
+.fig1 span:last-child{font-size:13px}
+.rung b{font-size:15px}
+.rung small{font-size:13px}
+.calc{grid-template-columns:minmax(0,1fr)}
+.rule div{grid-template-columns:minmax(0,1fr);gap:2px}
+table{font-size:14px}
+th,td{padding:8px 4px}
+.stack thead{display:none}
+.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}
+.stack td{border:0;padding:2px 0}
+.stack td::before{content:attr(data-l);display:block;font-size:13px;color:var(--soft)}
+}
+@media(prefers-reduced-motion:reduce){.bar{transition:none}}
+</style>
+</head>
+<body>
+<main id="page">
+<header class="track band">
+ <div class="wrap">
+  <div class="top">
+   <div>
+    <h1>10K by 24 January</h1>
+    <p class="sub">8 weeks · 3 runs + 2 strength sessions a week · from 10 minutes jogging to 10 km nonstop</p>
+   </div>
+   <div class="figs" id="figs"></div>
+  </div>
+  <div class="ladder" id="ladder" aria-label="Longest nonstop run per week, in minutes"></div>
+  <p class="cap">Longest nonstop run each week, in minutes. White = week done, yellow = this week.</p>
+ </div>
+</header>
+<nav><div class="wrap">
+ <a href="#plan">Plan</a><a href="#paces">Paces</a><a href="#groin">Groin rule</a><a href="#strength">Strength</a><a href="#method">How it works</a>
+</div></nav>
+
+<section class="band" id="plan"><div class="wrap">
+ <h2>The plan</h2>
+ <p class="status" id="status">Tick each session when it's done and score your groin each week.</p>
+ <div class="weeks" id="weeks"></div>
+ <div class="alt"><b>Plan B or C after week 7.</b> If the 60–65 min long run didn't go well, or the groin scored 4 or more: <b>B</b> run the 10K on 24 Jan with 30-second walk breaks every 2 km; <b>C</b> repeat week 7 and move the 10K to 31 Jan. Either way you finish the 10K.</div>
+</div></section>
+
+<section class="band alt-band" id="paces"><div class="wrap">
+ <h2>Your paces</h2>
+ <p>Weeks 1–3: forget pace. Run so you can talk in full sentences, heart rate under about 145 bpm. In week 4 you run 3 km comfortably hard (not all-out); enter the time here and every pace updates.</p>
+ <div class="calc">
+  <div>
+   <label for="t3">3 km check-in time (mm:ss)</label>
+   <input id="t3" inputmode="numeric" placeholder="19:00" autocomplete="off">
+   <div class="est" id="est"></div>
+  </div>
+  <div class="scroll"><table>
+   <thead><tr><th>Run type</th><th>Used in</th><th style="text-align:right">Pace /km</th></tr></thead>
+   <tbody id="pt"></tbody>
+  </table></div>
+ </div>
+</div></section>
+
+<section class="band" id="groin"><div class="wrap">
+ <div class="cols">
+  <div>
+   <h2>The groin rule</h2>
+   <p>Score the groin from 0 to 10 after every run. This rule overrides the schedule.</p>
+   <div class="rule">
+    <div class="v0"><b>0–3 /10</b><span>Back to normal the next morning? Carry on with the plan.</span></div>
+    <div class="v1"><b>4–5 /10</b><span>Or still sore the next morning: repeat this week, don't move up.</span></div>
+    <div class="v2"><b>Above 5</b><span>Getting worse during the run, or limping: stop, 3 days without running (cycling is fine if pain-free). See a physio if it doesn't settle.</span></div>
+   </div>
+  </div>
+  <div>
+   <h2>Protect the groin</h2>
+   <ul>
+    <li>Run on flat, even ground. No hills or sloping road edges for the first 4 weeks.</li>
+    <li>Short, quick steps. Long strides strain the groin.</li>
+    <li>Speed comes in slowly: easy only in weeks 1–2, moderate efforts from week 3, relaxed strides from week 4 if the groin scores 0–2. Never all-out sprints.</li>
+    <li>Don't massage or foam-roll hard on the calcified spot.</li>
+    <li>If it hurts in daily life or no physio has seen it recently, get it checked before starting. Calcification there can be different conditions, and the safe load depends on which one.</li>
+   </ul>
+  </div>
+ </div>
+</div></section>
+
+<section class="band alt-band" id="strength"><div class="wrap">
+ <h2>Strength · Monday and Friday, about 20 minutes</h2>
+ <div class="scroll"><table class="stack">
+  <thead><tr><th>Exercise</th><th>Weeks</th><th>Sets × reps</th><th>Why</th></tr></thead>
+  <tbody id="st"></tbody>
+ </table></div>
+ <p style="margin-top:14px">Leave out for now: deep side lunges, explosive jumps and heavy groin stretching.</p>
+</div></section>
+
+<section class="band" id="method"><div class="wrap">
+ <h2>How Runna builds a plan, and how this one copies it</h2>
+ <p>Worked out from how the app behaves in public, not from Runna's code.</p>
+ <ol class="steps">
+  <li><b>Onboarding</b>Goal and date, current ability, days per week, long-run day. Here: 10K on 24 Jan, 10 min nonstop, 3 runs, Sunday long run.</li>
+  <li><b>One fitness number</b>A benchmark time is turned into a predicted race time; every pace comes from it. Here: the week-4 3 km check-in.</li>
+  <li><b>Three runs a week</b>Easy run, quality session (intervals or tempo), long run. About 80% of the running is easy.</li>
+  <li><b>Phases</b>Base, Build, Peak, Taper, with a lighter week every 3–4 weeks. Here: week 4 is the deload.</li>
+  <li><b>Paces update</b>Check-ins recalculate paces; missed sessions are moved, not doubled up.</li>
+  <li><b>Strength as an extra</b>Short sessions protect tendons and joints. Here: groin and calf work, because of your injury and your 93 kg.</li>
+ </ol>
+ <p style="margin-top:18px"><b>Missed one run?</b> Skip it; if it was the long run, swap it with Tuesday. <b>Missed a week?</b> Repeat the previous one. <b>Shoes:</b> cushioned trainers fitted at a running shop. <b>Heart or blood-pressure history?</b> See your GP first.</p>
+ <p style="margin-top:20px"><button class="btn" id="reset" type="button">Clear all ticks and scores</button> <span id="rq" class="status"></span></p>
+</div></section>
+<footer class="band" style="padding-top:0"><div class="wrap">WU = warm-up: 5 min brisk walk, 5 min easy jog, gentle leg swings. CD = cool-down: 5–10 min walk. "3 min/1 min" = 3 minutes jogging, 1 minute walking.</div></footer>
+</main>
+<script type="application/json" id="state">{"done":{},"groin":{},"t3":"","race":""}</script>
+<script id="app">
+{
+const APP_SRC = document.currentScript.textContent;
+const PAGE_SRC = document.getElementById('page').outerHTML;
+const CSS_SRC = document.getElementById('css').textContent;
+let S;
+try { S = JSON.parse(document.getElementById('state').textContent); } catch (e) { S = {}; }
+S = Object.assign({done:{},groin:{},t3:'',race:''}, S);
+const LSK = 'tenk-plan-state';
+const isEmpty = s => !Object.keys(s.done).length && !Object.keys(s.groin).length && !s.t3 && !s.race;
+if (isEmpty(S)) { try { const l = JSON.parse(localStorage.getItem(LSK) || 'null'); if (l) S = Object.assign(S, l); } catch (e) {} }
+
+const W = [
+ {ph:'Base',km:'~5–6 km',lg:5,s:[['Tue','Easy','5 min walk → 6 × (2 min jog / 1 min walk)'],['Thu','Easy','5 min walk → 5 × (3 min jog / 1 min walk)'],['Sun','Long','5 min walk → 4 × (5 min jog / 1 min walk)']]},
+ {ph:'Base',km:'~8 km',lg:10,s:[['Tue','Easy','5 min walk → 4 × (5 min jog / 1 min walk)'],['Thu','Easy','5 min walk → 3 × (8 min jog / 1 min walk)'],['Sun','Long','5 min walk → 3 × (10 min jog / 1 min walk) · about 33 min']]},
+ {ph:'Base',km:'~11 km',lg:25,s:[['Tue','Easy','25 min nonstop, easy'],['Thu','Quality','WU → 4 × (2 min comfortably hard / 2 min easy jog) → CD. Keep it in control.'],['Sun','Long','2 × (15 min jog / 1 min walk) · about 4.5 km']]},
+ {ph:'Deload',km:'~10 km',lg:25,s:[['Tue','Easy','25 min easy'],['Thu','Easy','20 min easy + 4 × 15 s relaxed strides, only if the groin is 0–2'],['Sun','Check-in','WU → 3 km comfortably hard → CD. Enter the time under Paces.']]},
+ {ph:'Build',km:'~14 km',lg:40,s:[['Tue','Easy','30 min easy'],['Thu','Quality','WU → 4 × (4 min at 10K pace / 2 min jog) → CD'],['Sun','Long','40 min nonstop · about 5.5–6 km']]},
+ {ph:'Build',km:'~16 km',lg:50,s:[['Tue','Easy','35 min easy + 4 relaxed strides'],['Thu','Quality','WU → 2 × (10 min tempo / 2 min jog) → CD'],['Sun','Long','50 min nonstop · about 7–7.5 km']]},
+ {ph:'Peak',km:'~19 km',lg:65,s:[['Tue','Easy','35 min easy + 4 strides'],['Thu','Quality','WU → 3 × (8 min at 10K goal pace / 2 min jog) → CD'],['Sun','Go/no-go','60–65 min nonstop · about 8.5–9 km. Went badly, or groin 4+? Use plan B or C below.']]},
+ {ph:'Taper',km:'~10 km + race',lg:72,s:[['Tue','Easy','30 min easy'],['Thu','Quality','WU → 3 × (3 min at goal pace / 2 min jog) → CD'],['Sun','Race','10K. First 3 km slower than goal pace, settle in for km 3–7, push from km 8 only if it feels good.']]}
+];
+const START = new Date(2026,10,30), RACE = new Date(2027,0,24);
+const DAY = 864e5, MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const fd = d => d.getDate() + ' ' + MON[d.getMonth()];
+const today = new Date(); today.setHours(0,0,0,0);
+const cur = Math.min(8, Math.max(1, Math.floor((today - START) / DAY / 7) + 1));
+const started = today >= START;
+const esc = v => String(v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const okT = v => /^\d{1,2}:[0-5]\d$/.test(v) ? v : '';
+const toS = v => { const m = okT(v).split(':'); return m.length === 2 ? (+m[0]) * 60 + (+m[1]) : 0; };
+const mmss = s => { s = Math.round(s); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+const hms = s => { s = Math.round(s); const h = Math.floor(s / 3600); return h ? h + ':' + mmss(s - h * 3600).padStart(5, '0') : mmss(s); };
+const wkDone = i => [0,1,2].every(j => S.done[(i+1) + '-' + j]);
+const verdict = g => g === '' || g == null ? '' : g <= 3 ? ['v0','Carry on'] : g <= 5 ? ['v1','Repeat this week'] : ['v2','Stop · 3 days off'];
+
+function renderTop() {
+ const n = Object.values(S.done).filter(Boolean).length;
+ const days = Math.max(0, Math.round((RACE - today) / DAY));
+ document.getElementById('figs').innerHTML =
+  `<div class="fig1"><span class="num">${days}</span><span>days to the 10K</span></div>` +
+  `<div class="fig1"><span class="num">${n}/24</span><span>runs done</span></div>` +
+  `<div class="fig1"><span class="num">${started ? 'Wk ' + cur : 'Mon'}</span><span>${started ? 'this week' : 'start: 30 Nov'}</span></div>`;
+ document.getElementById('ladder').innerHTML = W.map((w, i) => {
+  const c = wkDone(i) ? 'done' : (i + 1 === cur ? 'now' : '');
+  const lab = i === 7 ? '10K' : w.lg + '′';
+  return `<div class="rung ${c}"><b>${lab}</b><div class="bar" style="height:${Math.round(w.lg / 72 * 82)}%"></div><small>W${i + 1}</small></div>`;
+ }).join('');
+}
+
+function renderWeeks() {
+ document.getElementById('weeks').innerHTML = W.map((w, i) => {
+  const n = i + 1, a = new Date(+START + i * 7 * DAY), b = new Date(+a + 6 * DAY);
+  const g = S.groin[n], v = verdict(g), now = n === cur;
+  const opts = ['<option value="">–</option>'].concat([...Array(11)].map((_, k) => `<option value="${k}"${g === k ? ' selected' : ''}>${k}</option>`)).join('');
+  const ses = w.s.map((s, j) => {
+   const on = !!S.done[n + '-' + j];
+   return `<div class="ses${on ? ' ok' : ''}"><div class="day">${s[0]}</div><button class="chk" type="button" role="checkbox" aria-checked="${on}" aria-label="Week ${n} ${s[0]} done" data-k="${n}-${j}">✓</button><div class="what"><span class="kind">${s[1]}</span><span class="txt">${s[2]}</span></div></div>`;
+  }).join('');
+  const race = n === 8 ? `<label for="race">Your 10K time</label><input id="race" placeholder="68:30" value="${esc(okT(S.race))}" inputmode="numeric" autocomplete="off">` : '';
+  return `<article class="wk${now ? ' now' : ''}" id="w${n}"><div class="wkh"><h3>Week ${n}<span class="tag${now ? ' now' : ''}">${now ? 'This week' : w.ph}</span></h3><span class="meta">${fd(a)} – ${fd(b)} · ${w.km}</span></div>${ses}
+   <div class="gro"><label for="g${n}">Groin, worst this week</label><select id="g${n}" data-w="${n}">${opts}</select>${v ? `<span class="verd ${v[0]}">${v[1]}</span>` : ''}${race}</div></article>`;
+ }).join('');
+}
+
+function renderPaces() {
+ const t = toS(S.t3), inp = document.getElementById('t3');
+ if (document.activeElement !== inp) inp.value = okT(S.t3);
+ const t5 = t ? t * 1.72 : 30 * 60, p5 = t5 / 5, t10 = t5 * 2.085, p10 = t10 / 10;
+ document.getElementById('est').innerHTML = t
+  ? `Predicted 10K<span class="num">${hms(t10)}</span>Estimated 5K ${mmss(t5)} (3 km time × 1.72)`
+  : `Example until you enter a time: a 5K of 30:00 gives<span class="num">${hms(t10)}</span>predicted 10K`;
+ const rows = [
+  ['Easy and long runs','Tue, Sun, warm-ups', mmss(p10 + 60) + '–' + mmss(p10 + 90)],
+  ['10K goal pace','Weeks 5, 7, 8 and race day', mmss(p10)],
+  ['Tempo','Week 6', '~' + mmss(p10 - 7)],
+  ['Comfortably hard / 5K pace','Week 3 intervals, check-in', mmss(p5)]
+ ];
+ document.getElementById('pt').innerHTML = rows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td class="p">${r[2]}</td></tr>`).join('');
+}
+
+const ST = [
+ ['Adductor squeeze: ball or pillow between the knees, lying on your back, knees bent','1–8','5 × 30 s at 50–70% effort','Holding work calms and builds the adductor tendon'],
+ ['Side-lying hip adduction: lift the bottom leg','1–8','3 × 12 each','Adductor strength through movement'],
+ ['Copenhagen plank, short lever: knee on a bench','3–8, only if 0–2/10','3 × 15–20 s each','Best-evidenced exercise against groin injuries'],
+ ['Single-leg calf raise, straight knee','1–8','3 × 12–15 each','Achilles and calf carry most of your 93 kg'],
+ ['Bent-knee calf raise','1–8','3 × 12–15 each','Soleus, which takes the most load when running'],
+ ['Glute bridge, then single-leg','1–8','3 × 12','Hip stability'],
+ ['Side plank','1–8','3 × 30 s each','Glute med and hip control'],
+ ['Split squat, short range, no deep lunge','3–8','3 × 8 each','Leg strength without overstretching the groin']
+];
+document.getElementById('st').innerHTML = ST.map(r => `<tr><td data-l="Exercise"><b>${r[0]}</b></td><td data-l="Weeks">${r[1]}</td><td data-l="Sets × reps" style="white-space:nowrap">${r[2]}</td><td data-l="Why">${r[3]}</td></tr>`).join('');
+
+function render() { renderTop(); renderWeeks(); renderPaces(); }
+render();
+
+let ART = null, timer = null;
+const statusEl = document.getElementById('status');
+function buildDoc() {
+ const json = JSON.stringify({done:S.done,groin:S.groin,t3:okT(S.t3),race:okT(S.race)}).replace(/</g, '\\u003c');
+ return '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<title>10K Training Plan</title>\n' +
+  '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">\n' +
+  '<style id="css">' + CSS_SRC + '</style>\n</head>\n<body>\n' + PAGE_SRC +
+  '\n<script type="application/json" id="state">' + json + '<\/script>\n<script id="app">' + APP_SRC + '<\/script>\n</body>\n</html>\n';
+}
+function save() {
+ try { localStorage.setItem(LSK, JSON.stringify(S)); } catch (e) {}
+ clearTimeout(timer);
+ if (!ART) { statusEl.textContent = 'Saved in this browser only.'; return; }
+ statusEl.textContent = 'Saving…';
+ timer = setTimeout(async () => {
+  try { await ART.publish(buildDoc()); statusEl.textContent = 'Saved to the page.'; }
+  catch (e) { statusEl.textContent = 'Saved in this browser only (this view can\'t save to the page).'; }
+ }, 1500);
+}
+
+document.getElementById('weeks').addEventListener('click', e => {
+ const b = e.target.closest('.chk'); if (!b) return;
+ const k = b.dataset.k; S.done[k] = !S.done[k]; if (!S.done[k]) delete S.done[k];
+ render(); const nb = document.querySelector(`.chk[data-k="${k}"]`); if (nb) nb.focus(); save();
+});
+document.getElementById('weeks').addEventListener('change', e => {
+ const t = e.target;
+ if (t.matches('select[data-w]')) { const w = t.dataset.w; if (t.value === '') delete S.groin[w]; else S.groin[w] = +t.value; render(); document.getElementById('g' + w).focus(); save(); }
+ if (t.id === 'race') { const v = okT(t.value.trim()); S.race = v; t.value = v; save(); }
+});
+const t3 = document.getElementById('t3');
+t3.addEventListener('input', () => { const v = okT(t3.value.trim()); if (v || !t3.value) { S.t3 = v; renderPaces(); renderTop(); } });
+t3.addEventListener('change', () => { S.t3 = okT(t3.value.trim()); t3.value = S.t3; renderPaces(); save(); });
+const rq = document.getElementById('rq'); let armed = false;
+document.getElementById('reset').addEventListener('click', () => {
+ if (!armed) { armed = true; rq.textContent = 'Click again to confirm.'; setTimeout(() => { armed = false; rq.textContent = ''; }, 4000); return; }
+ armed = false; rq.textContent = ''; S = {done:{},groin:{},t3:'',race:''}; render(); save();
+});
+
+if (window.claude && window.claude.use) {
+ window.claude.use('artifact').then(a => { ART = a; if (a) statusEl.textContent = 'Tick each session when it\'s done and score your groin each week. Progress saves to this page.'; }).catch(() => {});
+}
+}
+</script>
+</body>
+</html>
