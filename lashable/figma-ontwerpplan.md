@@ -20,30 +20,32 @@
 
 ---
 
-## 2. Sitemap
+## 2. Sitemap (update: twee studio's)
+
+Almere en Nieuwegein werken onder dezelfde naam, maar zijn los georganiseerd: eigen behandelingen, eigen producten, eigen specialist, eigen prijzen en eigen agenda. De site krijgt daarom een **studiokeuze** als startpagina en daarna **per studio een eigen site-deel**.
 
 ```
-Home
-├── Behandelingen (overzicht)
-│   ├── Lashlift
-│   ├── Lash extensions
-│   ├── Brow lamination
-│   ├── Henna brows
-│   ├── Pink Glow & Microneedling
-│   └── Permanente make-up (PMU, overzicht)
-│       ├── PMU wenkbrauwen
-│       ├── PMU lippen
-│       └── PMU eyeliner
-├── Tarieven
-├── Impressie
-├── Over ons            (aanbevolen)
-├── Contact & locaties  (Almere / Nieuwegein)
-└── [Boek nu]           → Salonized (widget/overlay, geen eigen pagina)
-Footer: privacybeleid, algemene voorwaarden / annuleringsbeleid
+/                         Studiokeuze: "Kies je studio" (Almere | Nieuwegein) – keuze wordt onthouden
+├── /almere/              Home Almere
+│   ├── behandelingen/…   Lash extensions, Lashlift, Brow lamination, Henna brows, Pink Glow & Microneedling, PMU (brows, lips, eyeliner)
+│   ├── tarieven
+│   ├── impressie
+│   └── over-ons          specialist Almere
+├── /nieuwegein/          Home Nieuwegein
+│   ├── behandelingen/…   Wimperlifting (incl. Korean lashlift), Brow lamination, Henna brows, Epileren & verven, Threading, Hoofdmassage, combi's
+│   ├── tarieven          (prijzen uit Treatwell)
+│   ├── impressie
+│   └── over-ons          specialist Nieuwegein
+└── [Boek nu]             per studio de eigen agenda: Nieuwegein → Treatwell; Almere → Salonized (bevestigen)
+Footer: beide studio's, privacybeleid, annuleringsbeleid
 ```
 
-**Navigatie (desktop):** Logo · Behandelingen (dropdown/mega-menu met foto per behandeling) · Tarieven · Impressie · Over ons · Contact · **[Boek nu]**
-**Navigatie (mobiel):** Logo · hamburger + een vaste knop "Boek nu" onderin het scherm (sticky)
+**Header binnen een studio:** Logo · [📍 Almere · wissel ▾] · Behandelingen · Tarieven · Impressie · Over ons · Contact · **[Boek nu]**. De studiowissel gaat terug naar de keuzepagina of direct naar de andere studio.
+**Per studio-home verschilt:** reviewscore, behandelingen in de slider (met eigen prijzen), uitgelicht blok (Almere: PMU; Nieuwegein: combi lashlift + brows), specialist, locatiekaart + "Liever naar de andere studio?", boekbalk en boekblok zonder studiokeuze.
+**Navigatie (mobiel):** Logo + studiopil · hamburger + vaste "Boek nu"-balk onderin.
+
+**Behandelingen Nieuwegein (Treatwell, 28-11-2026):** Wimperlifting € 35–75 (45–75 min) · Verven wimpers € 10 · Henna brows € 20–65 · Epileren wenkbrauwen € 13 · Browlifting/lamination € 35–45 · Epileren & verven € 18–25 · Verven wenkbrauwen € 10–15 · Threaden gezicht € 5–20 · Threaden gezicht + wenkbrauwen € 30 · Wimperextensions verwijderen € 15 · Hoofdmassage incl. hairplay € 30.
+**Behandelingen Almere:** volgens Instagram – nog bevestigen met de klant, inclusief prijzen.
 
 ---
 
