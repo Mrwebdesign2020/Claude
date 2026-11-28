@@ -86,9 +86,9 @@ Footer: privacybeleid, algemene voorwaarden / annuleringsbeleid
 | Blush | `#F4E1DE` | Sectie-achtergronden, kaarten |
 | Rose | `#D9A3A9` | Accenten, lijnen, iconen |
 | Glow | `#E0408F` | Spaarzaam, alleen voor de Pink Glow-pagina en badges |
-| Forest | `#1F3A2E` | **Tertiaire (ondersteunende) kleur**: detailvlakken zoals het PMU-vlak en het boekblok |
+| Forest | `#1F3A2E` | **Tertiaire (ondersteunende) kleur**: alleen boek-CTA's (primaire knop) en het afspraakblok — nooit als achtergrond van een gewone sectie |
 
-*Rolverdeling: primair = blush/rose (merk), secundair = ink (tekst, knoppen), tertiair = forest (detail- en accentvlakken).*
+*Rolverdeling: primair = blush/rose (sectievlakken, merk), secundair = ink (tekst, omlijnde knoppen, footer), tertiair = forest (alleen boek-knoppen en het "Plan je afspraak"-blok). Secties blijven licht: ivoor, wit of blush.*
 | Grey 600 | `#6B6461` | Secundaire tekst |
 
 **Typografie**
@@ -134,7 +134,7 @@ Alles opbouwen met **Auto Layout** en variabelen, zodat responsive varianten en 
 2. **Boekbalk**: studio (Almere/Nieuwegein) + behandeling + [Bekijk beschikbare tijden] → opent Salonized met die keuze
 3. **USP-strip**
 4. **Behandelingen – slider** (zoals La Diva): kop + intro + pijlknoppen links, rechts een horizontaal scrollende rij van 6 kaarten (foto, categorie, naam, korte tekst, duur/prijs) die over de rand doorloopt. Mobiel: swipe met stippen. **Dit is het belangrijkste blok van de pagina**: elke kaart linkt naar de detailpagina; "Bekijk alle behandelingen" gaat naar het overzicht (daar wel een grid)
-5. **Uitgelicht – PMU**: foto + tekst op een vlak in bosgroen (`#1F3A2E`, tertiaire kleur)
+5. **Uitgelicht – PMU**: foto + tekst op een lichte (witte) sectie
 6. **De gezichten achter Lashable**: de twee eigenaren met portret, naam en studio
 7. **Review**: één grote review naast een grote foto (in plaats van een rij kaarten)
 8. **Locaties**: twee kaarten
