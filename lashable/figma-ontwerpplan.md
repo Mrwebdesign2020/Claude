@@ -128,14 +128,17 @@ Alles opbouwen met **Auto Layout** en variabelen, zodat responsive varianten en 
 
 ### 7.1 Home – zwaartepunt op de behandelingen
 1. **Hero**: grote close-up (wimpers/wenkbrauwen), H1 *"The perfect lashes and brows"*, subregel "in Almere & Nieuwegein", knoppen [Boek nu] en [Bekijk behandelingen]
-2. **USP-strip**
-3. **Behandelingen**: grid met 6 kaarten (Lashlift, Lash extensions, Brow lamination, Henna brows, Pink Glow & Microneedling, PMU). **Dit is het belangrijkste blok van de pagina**: elke kaart linkt naar de detailpagina
-4. **Uitgelicht**: PMU of Pink Glow, de behandelingen met de hoogste waarde, met een voor/na-slider
-5. **Over Lashable**: foto van de eigenaren, korte persoonlijke tekst, certificeringen
-6. **Reviews**
-7. **Impressie-teaser**: 6 tot 8 beelden + "Bekijk alle resultaten"
+2. **Boekbalk**: studio (Almere/Nieuwegein) + behandeling + [Bekijk beschikbare tijden] → opent Salonized met die keuze
+3. **USP-strip**
+4. **Behandelingen**: grid met 6 kaarten (Lashlift, Lash extensions, Brow lamination, Henna brows, Pink Glow & Microneedling, PMU). **Dit is het belangrijkste blok van de pagina**: elke kaart linkt naar de detailpagina
+5. **Uitgelicht – PMU**: foto + tekst op een vlak in diep pruim (`#4B2E3B`, tweede accentkleur)
+6. **De gezichten achter Lashable**: de twee eigenaren met portret, naam en studio
+7. **Review**: één grote review naast een grote foto (in plaats van een rij kaarten)
 8. **Locaties**: twee kaarten
-9. **CTA-banner** + footer
+9. **Instagram**: strook met 6 posts + [Volg @lashable.nl]
+10. **Boekblok** (pruim) met dezelfde keuzevelden als de boekbalk + footer
+
+*Overgenomen uit de La Diva-referentie: boekbalk, kleurvlakken, eigenaren, grote review, Instagram-strook, boekblok onderaan. Bewust niet overgenomen: scriptaccenten, labels boven koppen, carrousels voor behandelingen, persl­ogo's, blog.*
 
 ### 7.2 Behandelingen (overzicht)
 Intro, daarna per categorie (**Lashes · Brows · Skin · Permanente make-up**) de behandelingskaarten. Filterchips bovenaan om snel naar een categorie te springen.
