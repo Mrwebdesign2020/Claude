@@ -89,9 +89,13 @@ Footer: privacybeleid, algemene voorwaarden / annuleringsbeleid
 | Grey 600 | `#6B6461` | Secundaire tekst |
 
 **Typografie**
-- Koppen: een elegante schreefletter, cursief voor accenten (bijv. *Cormorant Garamond* of *Playfair Display*). Die sluit aan op "LASHABLE" in de bio en op de tagline onder het logo.
-- Broodtekst/UI: een strakke schreefloze letter (bijv. *Inter*, *Manrope* of *Montserrat*).
-- Schaal: H1 56/64 · H2 40 · H3 28 · body 16–18 · klein 14 (op mobiel ±20% kleiner).
+- **Gekozen: [Ysabeau](https://fonts.google.com/specimen/Ysabeau)**, één familie (Google Fonts, OFL).
+  - Koppen: *Ysabeau* Light/Regular, groot gezet met krappe letterafstand (−1 tot −2%).
+  - Tekst, knoppen en prijzen: *Ysabeau Office*, de variant met rechte cijfers (die staan netjes onder elkaar in de prijslijst).
+- Waarom: een schreefloze letter op een Garamond-skelet. Fijne, taps toelopende lijnen (net als een wimper) en een verfijnd karakter, zonder in de "zachte serif = premium"-valkuil te stappen. Weinig gebruikt (Google Fonts populariteit #1178), dus niet de standaardlook van gegenereerde sites.
+- Afgevallen: Cormorant Garamond + Manrope (de AI-standaardcombinatie), Funnel Display (te technisch), Bricolage Grotesque (veel gebruikt), Hanken Grotesk Light (te neutraal). Het vergelijkingsbord staat op de Figma-pagina *2 · Foundations*.
+- Regels: geen cursieve accentwoorden in koppen, geen kleine labels in hoofdletters met extra letterafstand, maximaal vijf zichtbare groottes per pagina.
+- Schaal: Display 72/76 · H1 60/64 · H2 44/48 · H3 28/34 · body 17/27 · groot 19/30 · klein 15/22 (mobiel: H1 44, H2 32, H3 24).
 
 **Beeld:** afgeronde of boogvormige fotokaders (een verwijzing naar de ooglijn), fijne lijnillustraties van een oog, wimpers en wenkbrauw (in de stijl van de highlight-iconen) als iconen per behandeling.
 
