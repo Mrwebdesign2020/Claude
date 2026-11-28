@@ -216,3 +216,14 @@ Intro, daarna per categorie (**Lashes · Brows · Skin · Permanente make-up**) 
 | 6. Verwerking & handoff | Feedback verwerkt (2 rondes), handoff-pagina voor development | ✔ |
 
 **Te ontwerpen schermen:** Home, Behandelingen-overzicht, Behandelingspagina (template + PMU-variant), Tarieven, Impressie, Over ons, Contact, boekingsoverlay. Elk scherm mobiel en desktop, dus ±16 frames.
+
+---
+
+## 11. Prototype & bronnen (update)
+
+- **Prototype (Figma-pagina *7 · Prototype*)**
+  - Desktop: https://www.figma.com/proto/EjEKPUgff7zXWuSu4aXOyu/Lashable?node-id=30-827&starting-point-node-id=30%3A827
+  - Mobiel: https://www.figma.com/proto/EjEKPUgff7zXWuSu4aXOyu/Lashable?node-id=30-1335&starting-point-node-id=30%3A1335
+  - Interacties: vaste header, hover-animaties (knoppen, pijlen, behandelkaarten), vloeiende paginaovergangen (smart animate), scroll naar behandelingen, slider-pijlen, boekings-pop-up (desktop: modal, mobiel: bottom sheet).
+- **Treatwell (Lashable Nieuwegein)**: 4,7/5 uit 161 reviews, Hoornseschans 143, 3992 CL Nieuwegein. 7 eigen salonfoto's gebruikt (portret eigenaar, behandelkamer, pand, certificaten, producten, logo aan de muur).
+- **Boekingssysteem**: Nieuwegein boekt via Treatwell — nagaan of Almere via Salonized boekt, en welke widget de site krijgt (of beide, per studio).
