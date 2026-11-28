@@ -138,7 +138,7 @@ Alles opbouwen met **Auto Layout** en variabelen, zodat responsive varianten en 
 9. **Instagram**: strook met 6 posts + [Volg @lashable.nl]
 10. **Boekblok** (pruim) met dezelfde keuzevelden als de boekbalk + footer
 
-*Overgenomen uit de La Diva-referentie: boekbalk, kleurvlakken, eigenaren, grote review, Instagram-strook, boekblok onderaan. Bewust niet overgenomen: scriptaccenten, labels boven koppen, carrousels voor behandelingen, persl­ogo's, blog.*
+*Overgenomen uit de La Diva-referentie: boekbalk, kleurvlakken, eigenaren, grote review, Instagram-strook, boekblok onderaan. Bewust niet overgenomen: scriptaccenten, labels boven koppen, carrousels voor behandelingen, perslogo's, blog.*
 
 ### 7.2 Behandelingen (overzicht)
 Intro, daarna per categorie (**Lashes · Brows · Skin · Permanente make-up**) de behandelingskaarten. Filterchips bovenaan om snel naar een categorie te springen.
