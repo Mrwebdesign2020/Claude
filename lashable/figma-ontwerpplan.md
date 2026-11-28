@@ -90,7 +90,7 @@ Footer: privacybeleid, algemene voorwaarden / annuleringsbeleid
 
 **Typografie**
 - **Gekozen: [Ysabeau](https://fonts.google.com/specimen/Ysabeau)**, één familie (Google Fonts, OFL).
-  - Koppen: *Ysabeau* Light/Regular, groot gezet met krappe letterafstand (−1 tot −2%).
+  - Koppen: *Ysabeau* Bold, in lijn met het vette woordmerk van het logo; krappe letterafstand (−1 tot −3%).
   - Tekst, knoppen en prijzen: *Ysabeau Office*, de variant met rechte cijfers (die staan netjes onder elkaar in de prijslijst).
 - Waarom: een schreefloze letter op een Garamond-skelet. Fijne, taps toelopende lijnen (net als een wimper) en een verfijnd karakter, zonder in de "zachte serif = premium"-valkuil te stappen. Weinig gebruikt (Google Fonts populariteit #1178), dus niet de standaardlook van gegenereerde sites.
 - Afgevallen: Cormorant Garamond + Manrope (de AI-standaardcombinatie), Funnel Display (te technisch), Bricolage Grotesque (veel gebruikt), Hanken Grotesk Light (te neutraal). Het vergelijkingsbord staat op de Figma-pagina *2 · Foundations*.
