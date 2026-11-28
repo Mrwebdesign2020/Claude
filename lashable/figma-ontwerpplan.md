@@ -130,7 +130,7 @@ Alles opbouwen met **Auto Layout** en variabelen, zodat responsive varianten en 
 1. **Hero**: grote close-up (wimpers/wenkbrauwen), H1 *"The perfect lashes and brows"*, subregel "in Almere & Nieuwegein", knoppen [Boek nu] en [Bekijk behandelingen]
 2. **Boekbalk**: studio (Almere/Nieuwegein) + behandeling + [Bekijk beschikbare tijden] → opent Salonized met die keuze
 3. **USP-strip**
-4. **Behandelingen**: grid met 6 kaarten (Lashlift, Lash extensions, Brow lamination, Henna brows, Pink Glow & Microneedling, PMU). **Dit is het belangrijkste blok van de pagina**: elke kaart linkt naar de detailpagina
+4. **Behandelingen – slider** (zoals La Diva): kop + intro + pijlknoppen links, rechts een horizontaal scrollende rij van 6 kaarten (foto, categorie, naam, korte tekst, duur/prijs) die over de rand doorloopt. Mobiel: swipe met stippen. **Dit is het belangrijkste blok van de pagina**: elke kaart linkt naar de detailpagina; "Bekijk alle behandelingen" gaat naar het overzicht (daar wel een grid)
 5. **Uitgelicht – PMU**: foto + tekst op een vlak in diep pruim (`#4B2E3B`, tweede accentkleur)
 6. **De gezichten achter Lashable**: de twee eigenaren met portret, naam en studio
 7. **Review**: één grote review naast een grote foto (in plaats van een rij kaarten)
